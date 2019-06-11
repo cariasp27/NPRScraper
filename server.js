@@ -75,7 +75,10 @@ app.get("/scrape", function(req, res) {
 app.get('/', (req,res) => {
   db.Article
     .find({})
-    .then(articles => res.render('index', {articles}))
+    .then(function(dbArticle) {
+      var data = {articles: dbArticle};
+      res.render("index", data);
+    })
     .catch(err=> res.json(err));
 });
 

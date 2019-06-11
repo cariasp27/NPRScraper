@@ -2,7 +2,7 @@
 <div class="container">
 
     <div class="jumbotron">
-      National Public aRticles
+      <center><img src="./assets/img/npr.png" id="logo" alt="npr-logo"></center>
         </div>
     </div><!-- /jumbotron -->
 
@@ -12,7 +12,12 @@
            <div id="wrapper">
       <h1>Note Scraper</h1>
       <h2><i>If you can do this...the homework should be no problem.</i></h2>
-      <div id="articles"></div>
+      <div id="articles">
+        {{#each articles }}
+        <h1>{{title}}</h1>
+        <a>{{link}}</a>
+        {{/each}}
+      </div>
       <div id="notes"></div>
     </div>
          </div>
