@@ -1,6 +1,7 @@
 
 // Whenever someone clicks a p tag
-$(document).on("click", "p", function() {
+$(document).on("click", ".NPR", function() {
+  console.log("I've been clicked!")
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag

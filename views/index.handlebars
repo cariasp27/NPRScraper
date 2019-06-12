@@ -14,8 +14,11 @@
       <h2><i>If you can do this...the homework should be no problem.</i></h2>
       <div id="articles">
         {{#each articles }}
+        <div class="NPR" data-id="{{_id}}">
         <h1>{{title}}</h1>
+        <p>{{summary}}</p>
         <a>{{link}}</a>
+        </div>
         {{/each}}
       </div>
       <div id="notes"></div>
