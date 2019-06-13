@@ -1,30 +1,24 @@
 {{!-- Setup the index.handlebars to have the template that Handlebars can render onto. --}}
-<div class="container">
-
-    <div class="jumbotron">
-      <center><img src="./assets/img/npr.png" id="logo" alt="npr-logo"></center>
+<center><img src="./assets/img/npr.png" id="logo" alt="npr-logo"></center>
+<div class="row">
+  <center><button class="btn-success" id="scrape" >Scrape</button></center>
+  <div class="col-lg-12">
+    
+    <div class="container articles">
+      <div id="wrapper">
+        <div id="articles">
+          {{#each articles }}
+          <div class="NPR" data-id="{{_id}}">
+            <h1>{{title}}</h1>
+            <p>{{summary}}</p>
+            <a>{{link}}</a>
+          </div>
+          {{/each}}
         </div>
-    </div><!-- /jumbotron -->
-
-    <div class="row">
-       <div class="col-lg-12">
-         <div class="container articles">
-           <div id="wrapper">
-      <h1>Note Scraper</h1>
-      <h2><i>If you can do this...the homework should be no problem.</i></h2>
-      <div id="articles">
-        {{#each articles }}
-        <div class="NPR" data-id="{{_id}}">
-        <h1>{{title}}</h1>
-        <p>{{summary}}</p>
-        <a>{{link}}</a>
-        </div>
-        {{/each}}
+        <div id="notes"></div>
       </div>
-      <div id="notes"></div>
     </div>
-         </div>
-       </div>
-    </div><!-- /row -->
+  </div>
+</div><!-- /row -->
 
 </div><!-- /container -->

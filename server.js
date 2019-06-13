@@ -43,13 +43,20 @@ app.get("/scrape", function(req, res) {
     
 
 
-    $("article").each(function(i, element) {
-
+    $("article .item-info").each(function(i, element) {
       var result = {};
-      // Add the text and href of every link, and save them as properties of the result object
-      result.title = $(this).children("h2.title").children("a").text();
-      result.summary = $(this).children("p.teaser").children("a").text();
-      result.link = $(this).children("h2.title").children("a").attr();
+      // Add the text and href of every link, and save them as properties of the result 
+
+      result.title = $(element).find("h2.title").find("a").text();
+
+      console.log("title " + result.title);
+
+      result.summary = $(element).find("p.teaser").find("a").text();
+
+      console.log("summary " + result.summary);
+      result.link = $(element).find("h2.title").find("a").attr("href");
+      console.log("link " + result.link);
+      console.log("Object to send through Mongoose: " + result);
           // Create a new Article using the `result` object built from scraping
           db.Article.create(result)
           .then(function(dbArticle) {
@@ -72,7 +79,6 @@ app.get('/', (req,res) => {
   db.Article
     .find({})
     .then(function(dbArticle) {
-      console.log(dbArticle);
       var data = {articles: dbArticle};
       res.render("index", data);
     })
@@ -81,7 +87,10 @@ app.get('/', (req,res) => {
 
 // Route for emptying database
 app.get("/poof", function(req,res){
-  db.Article.deleteMany();
+  db.Article.deleteMany().then(function(){
+    console.log("poof")
+  })
+
 })
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
